@@ -8,7 +8,7 @@ on:
     branches: [ "main" ]
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}:/app:latest
+  IMAGE_NAME: ghcr.io/${{ github.repository }}:/scrapeweb:latest
 
 jobs:
   build-and-deploy:
