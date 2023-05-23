@@ -48,9 +48,7 @@ jobs:
           context: .
           push: true
           tags: ${{ env.IMAGE_NAME }}
-      - uses: a7ul/tar-action@v1.1.0
-        with:
-          outPath: deploy.tar
+
       - name: Deploy App to Caprover
         uses: caprover/deploy-from-github@v1.1.2
         with:
