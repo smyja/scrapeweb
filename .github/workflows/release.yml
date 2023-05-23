@@ -1,10 +1,10 @@
-name: Deploy to staging
+name: Deploy to caprover
 
 env:
     CONTEXT_DIR: './'
     IMAGE_NAME: ${{ github.repository }}
     DOCKERFILE: ./Dockerfile
-    CAPROVER_APP: myapp-staging
+    # CAPROVER_APP: myapp-staging
     DOCKER_REGISTRY: ghcr.io
 
 on:
@@ -24,12 +24,14 @@ jobs:
                   echo "IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/$IMAGE_NAME" >> $GITHUB_ENV
                   export IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/$IMAGE_NAME
                   echo "FULL_IMAGE_NAME=$IMAGE_NAME_WITH_REGISTRY:$GITHUB_SHA-gitsha" >> $GITHUB_ENV
+           
             - name: Log in to the Container registry
               uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
               with:
                   registry: ${{ env.DOCKER_REGISTRY }}
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
+
             - name: Build and Push Release to DockerHub
               shell: bash
               run: chmod +x ./build_and_push.sh
