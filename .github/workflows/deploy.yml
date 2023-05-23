@@ -7,6 +7,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository }}/app:latest
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -26,20 +29,24 @@ jobs:
       - run: npm run build --if-present
       - run: npm run test --if-present
 
-      - uses: a7ul/tar-action@v1.1.0
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1
         with:
-          command: c
-          cwd: "./"
-          files: |
-            webserver/
-            backend/
-            frontend/dist/
-            captain-definition
-          outPath: deploy.tar
-  
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ env.IMAGE_NAME }}
+
       - name: Deploy App to Caprover
         uses: caprover/deploy-from-github@v1.1.2
         with:
           server: '${{ secrets.CAPROVER_SERVER }}'
           app: '${{ secrets.APP_NAME }}'
           token: '${{ secrets.APP_TOKEN }}'
+          imageName: '${{ env.IMAGE_NAME }}'
