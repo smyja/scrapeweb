@@ -1,11 +1,10 @@
-FROM node:16.16.0-alpine3.16
-
-LABEL org.opencontainers.image.source = "https://github.com/caprover/deploy-from-github"
-
-RUN apk add --no-cache git \
- && npm i -g caprover \
- && npm cache clean --force
-
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["sh","/entrypoint.sh"]
+# Production environment
+FROM nginx:1.13.9-alpine
+RUN rm -rf /etc/nginx/conf.d
+RUN mkdir -p /etc/nginx/conf.d
+COPY ./default.conf /etc/nginx/conf.d/
+COPY ./.next/standalone/.next/server/pages /usr/share/nginx/html
+COPY ./public /usr/share/nginx/html/public
+COPY ./.next/static /usr/share/nginx/html/_next/static
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
