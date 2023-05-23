@@ -1,0 +1,22 @@
+{
+    "title": "Features with monotone icons",
+    "category": "features",
+    "author": "rtivital",
+    "responsive": true,
+    "withColor": true,
+    "dependencies": [
+      "/core/theme-icon/",
+      "/core/title/",
+      "/core/text/",
+      "/core/container/",
+      "/core/simple-grid/",
+      "@tabler/icons-react"
+    ],
+    "props": {
+      "title": "Integrate effortlessly with any technology stack",
+      "description": "Insight is designed with versatility in mind, allowing for seamless integration with a wide range of technology stacks."
+    },
+    "canvas": {
+      "center": false
+    }
+  }
