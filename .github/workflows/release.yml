@@ -20,6 +20,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                node-version: ${{ matrix.node-version }}
+                cache: "npm"
+            - run: npm ci
+            - run: npm run build --if-present
+            - run: npm run test --if-present
             - run: |
                   echo "IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/$IMAGE_NAME" >> $GITHUB_ENV
                   export IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/$IMAGE_NAME
@@ -32,23 +40,25 @@ jobs:
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Build and Push Release to DockerHub
-              shell: bash
-              run: chmod +x ./build_and_push.sh
-
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
+            - name: Extract metadata (tags, labels) for Docker
+              id: meta
+              uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
               with:
-                node-version: ${{ matrix.node-version }}
-                cache: "npm"
-            - run: npm ci
-            - run: npm run build --if-present
-            - run: npm run test --if-present
+                images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+            - name: Build and push Docker image
+              uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+              with:
+                context: .
+                push: true
+                tags: ${{ steps.meta.outputs.tags }}
+                labels: ${{ steps.meta.outputs.labels }}
+
 
             - name: Deploy to CapRover
-              uses: caprover/deploy-from-github@d76580d79952f6841c453bb3ed37ef452b19752c
+              uses: floms/action-caprover@v1
               with:
                   server: ${{ secrets.CAPROVER_SERVER }}
                   app: ${{ secrets.APP_NAME }}
                   token: '${{ secrets.APP_TOKEN }}'
-                  image: '${{ env.FULL_IMAGE_NAME }}'
+                  image: ${{ steps.meta.outputs.tags }}
