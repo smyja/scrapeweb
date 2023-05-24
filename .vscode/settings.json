@@ -1,5 +1,0 @@
-{
-  "yaml.schemas": {
-    "https://json.schemastore.org/github-workflow.json": "file:///Users/mac/Documents/GitHub/scrapeweb/.github/workflows/deploy.yml"
-  }
-}
