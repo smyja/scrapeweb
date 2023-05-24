@@ -1,4 +1,4 @@
-name: Deploy to caprover instance
+name: Deploy to caprover instance.
 
 env:
     CONTEXT_DIR: './'
