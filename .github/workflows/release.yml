@@ -1,4 +1,4 @@
-name: Deploy to caprover
+name: Deploy to caprover instance
 
 env:
     CONTEXT_DIR: './'
@@ -44,7 +44,7 @@ jobs:
             - run: npm ci
             - run: npm run build --if-present
             - run: npm run test --if-present
-            
+
             - name: Deploy to CapRover
               uses: caprover/deploy-from-github@d76580d79952f6841c453bb3ed37ef452b19752c
               with:
