@@ -30,7 +30,7 @@ jobs:
               with:
                   registry: ${{ env.DOCKER_REGISTRY }}
                   username: ${{ github.actor }}
-                  password: ${{ secrets.GITHUB_TOKEN }}
+                  password: ${{ secrets.PAT }}
 
             - name: Build and Push Release to DockerHub
               shell: bash
