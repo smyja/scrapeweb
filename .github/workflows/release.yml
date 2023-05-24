@@ -56,7 +56,7 @@ jobs:
 
 
             - name: Deploy to CapRover
-              uses: floms/action-caprover@v1
+              uses: caprover/deploy-from-github@d76580d79952f6841c453bb3ed37ef452b19752c
               with:
                   server: ${{ secrets.CAPROVER_SERVER }}
                   password: ${{ secrets.CAPROVER_PASSWORD }}
