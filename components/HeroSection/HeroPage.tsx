@@ -107,7 +107,7 @@ export function HeroText() {
 
         <Container p={0} size={600}>
           <Text size="lg" color="dimmed" className={classes.description}>
-          Insight is a groundbreaking autonomous AI system designed for medical research. With its sophisticated Boss Agent and Worker Agent framework, Insight effectively streamlines the research process by intelligently delegating tasks and adjusting priorities based on the results.
+         Scrapeweb is a groundbreaking autonomous AI system designed for medical research. With its sophisticated Boss Agent and Worker Agent framework, Insight effectively streamlines the research process by intelligently delegating tasks and adjusting priorities based on the results.
           </Text>
         </Container>
 
