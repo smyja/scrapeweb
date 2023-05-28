@@ -11,7 +11,7 @@ COPY package*.json ./
 
 # Copy the built application files
 COPY ./.next ./.next
-COPY ./public ./public
+COPY ./public /usr/share/nginx/html/public
 COPY ./.next/static /usr/share/nginx/html/_next/static
 # Expose the desired port (e.g., 3000)
 EXPOSE 3000
