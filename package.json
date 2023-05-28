@@ -16,7 +16,6 @@
     "@mantine/hooks": "6.0.0",
     "@mantine/next": "6.0.0",
     "@tabler/icons-react": "^2.17.0",
-    "airtable": "^0.11.6",
     "axios": "^1.4.0",
     "next": "13.2.3",
     "react": "18.2.0",
