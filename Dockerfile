@@ -1,16 +1,26 @@
-FROM node:16-alpine
+# Production environment
+FROM nginx:1.13.9-alpine
 
-# Set working directory
-WORKDIR /app
+# Remove default Nginx configuration
+RUN rm -rf /etc/nginx/conf.d
 
-# Copy the built application files from the CI artifacts directory
-COPY ./.next ./.next
-COPY ./public ./public
-COPY ./package.json ./package.json
-COPY ./next.config.js ./next.config.js
+# Create new Nginx configuration directory
+RUN mkdir -p /etc/nginx/conf.d
 
-# Expose the desired port (e.g., 3000)
-EXPOSE 3000
+# Set appropriate permissions for the app directory
+RUN chmod -R 755 /usr/share/nginx/html/.next/server/app
 
-# Start the Node.js server
-CMD ["npm", "run", "start"]
+# Copy Nginx configuration file
+COPY ./default.conf /etc/nginx/conf.d/
+
+# Copy built application files
+COPY ./.next/server/pages /usr/share/nginx/html
+COPY ./.next/server/app /usr/share/nginx/html
+COPY ./public /usr/share/nginx/html/public
+COPY ./.next/static /usr/share/nginx/html/_next/static
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
