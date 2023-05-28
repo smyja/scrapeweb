@@ -18,7 +18,7 @@ COPY ./dist/server/pages /usr/share/nginx/html
 COPY ./dist/server/app /usr/share/nginx/html
 COPY ./public /usr/share/nginx/html/public
 COPY ./dist/static /usr/share/nginx/html/_next/static
-
+COPY ./styles /usr/share/nginx/html/styles
 # Expose port 80
 EXPOSE 80
 
