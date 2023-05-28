@@ -11,7 +11,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   output: 'standalone',
-  // distDir: 'dist',
+  distDir: 'dist',
 }
 
 module.exports = nextConfig
