@@ -14,10 +14,10 @@ RUN mkdir -p /etc/nginx/conf.d
 COPY ./default.conf /etc/nginx/conf.d/
 
 # Copy built application files
-COPY ./.next/server/pages /usr/share/nginx/html
-COPY ./.next/server/app /usr/share/nginx/html
+COPY ./dist/server/pages /usr/share/nginx/html
+COPY ./dist/server/app /usr/share/nginx/html
 COPY ./public /usr/share/nginx/html/public
-COPY ./.next/static /usr/share/nginx/html/_next/static
+COPY ./dist/static /usr/share/nginx/html/_next/static
 
 # Expose port 80
 EXPOSE 80
