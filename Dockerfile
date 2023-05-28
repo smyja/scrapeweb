@@ -10,9 +10,10 @@ COPY package*.json ./
 # RUN npm install --production
 
 # Copy the built application files
-COPY ./.next ./.next
-COPY ./public /usr/share/nginx/html/pubblic
-COPY ./.next/static ./_next/static
+COPY .next ./.next
+COPY public ./public
+COPY .next/static ./_next/static
+
 # Expose the desired port (e.g., 3000)
 EXPOSE 3000
 
