@@ -10,8 +10,8 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output: 'export',
-  distDir: 'dist',
+  output: 'standalone',
+  // distDir: 'dist',
 }
 
 module.exports = nextConfig

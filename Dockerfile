@@ -1,26 +1,20 @@
-# Production environment
-FROM nginx:1.13.9-alpine
+FROM node:16-alpine
 
-# Remove default Nginx configuration
-RUN rm -rf /etc/nginx/conf.d
+# Set working directory
+WORKDIR /app
 
-# Create new Nginx configuration directory
-RUN mkdir -p /etc/nginx/conf.d
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
 
-# Set appropriate permissions for the app directory
+# Install dependencies
+# RUN npm install --production
 
+# Copy the built application files
+COPY ./.next ./.next
+COPY ./public ./public
 
-# Copy Nginx configuration file
-COPY ./default.conf /etc/nginx/conf.d/
+# Expose the desired port (e.g., 3000)
+EXPOSE 3000
 
-# Copy built application files
-COPY ./dist/server/pages /usr/share/nginx/html
-COPY ./dist/server/app /usr/share/nginx/html
-COPY ./public /usr/share/nginx/html/public
-COPY ./dist/static /usr/share/nginx/html/_next/static
-COPY ./styles /usr/share/nginx/html/styles
-# Expose port 80
-EXPOSE 80
-
-# Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# Start the Node.js server
+CMD ["node", "./.next/standalone/server.js"]
