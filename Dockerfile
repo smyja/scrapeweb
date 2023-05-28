@@ -1,18 +1,21 @@
 FROM node:16-alpine
 
 # Set working directory
+WORKDIR /app
 
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
 
-# Copy the built application files from the CI artifacts directory
+# Install dependencies
+# RUN npm install --production
+
+# Copy the built application files
 COPY ./.next ./.next
 COPY ./public ./public
-COPY ./node_modules ./node_modules
-COPY ./package.json ./package.json
-COPY ./next.config.js ./next.config.js
-COPY ./dist ./dist
+COPY ./.next/static ./_next/static
 
 # Expose the desired port (e.g., 3000)
 EXPOSE 3000
 
 # Start the Node.js server
-CMD ["npm", "run", "start"]
+CMD ["node", "./.next/standalone/server.js"]
