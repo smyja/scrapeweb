@@ -1,12 +1,16 @@
-# Production environment
-FROM nginx:1.13.9-alpine
-RUN rm -rf /etc/nginx/conf.d
-RUN mkdir -p /etc/nginx/conf.d
-COPY ./default.conf /etc/nginx/conf.d/
-COPY ./.next/server/pages /usr/share/nginx/html
-COPY ./.next/server/app /usr/share/nginx/html
-COPY ./.next/server/chunks /usr/share/nginx/html
-COPY ./public /usr/share/nginx/html/public
-COPY ./.next/static /usr/share/nginx/html/_next/static
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+FROM node:16-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy the built application files from the CI artifacts directory
+COPY ./.next ./.next
+COPY ./public ./public
+COPY ./package.json ./package.json
+COPY ./next.config.js ./next.config.js
+
+# Expose the desired port (e.g., 3000)
+EXPOSE 3000
+
+# Start the Node.js server
+CMD ["npm", "run", "start"]
