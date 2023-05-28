@@ -46,7 +46,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     textAlign: "center",
     fontWeight: 800,
-    fontSize: rem(70),
+    fontSize: rem(60),
     letterSpacing: -1,
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     marginBottom: theme.spacing.xs,
@@ -106,13 +106,11 @@ export function HeroText() {
     <Container className={classes.wrapper} size={1400}>
       <div className={classes.inner}>
     
-        <Title className={classes.title}>Get more done in less time.</Title>
+        <Title className={classes.title}>Harness the power of web scraping effortlessly.</Title>
 
         <Container p={0} size={600}>
           <Text size="lg" color="dimmed" className={classes.description}>
-            Meet your new digital companion for quick and easy access to your
-            docs, files, and databases. Get started with a simple question -
-            Just ask!
+          Scrapeweb is the ultimate platform for developers to build, deploy, and monitor web scraping and browser automation tools.
           </Text>
         </Container>
 

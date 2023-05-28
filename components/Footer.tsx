@@ -1,4 +1,5 @@
 import { createStyles, Container, Group, Anchor, rem } from "@mantine/core";
+import Link from 'next/link'
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -34,15 +35,19 @@ interface FooterSimpleProps {
 export function FooterSimple({ links }: FooterSimpleProps) {
   const { classes } = useStyles();
   const items = links.map((link) => (
-    <Anchor<"a">
-      color="dimmed"
+
+    <Anchor
+     href={link.link}
       key={link.label}
-      href={link.link}
-      onClick={(event) => event.preventDefault()}
       size="sm"
+      component={Link}
+      color="dimmed"
     >
       {link.label}
     </Anchor>
+     
+
+
   ));
 
   return (

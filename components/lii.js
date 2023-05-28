@@ -1,8 +1,8 @@
 const linkjson = {
   links: [
     {
-      link: "/about",
-      label: "Features",
+      link: "/terms",
+      label: "Terms and Conditions",
     },
     {
       link: "#1",
@@ -26,17 +26,14 @@ const linkjson = {
         },
       ],
     },
-    {
-      link: "/about",
-      label: "About",
-    },
+
     {
       link: "/pricing",
       label: "Pricing",
     },
     {
-      link: "#2",
-      label: "Support",
+      link: "/contact",
+      label: "Contact",
       links: [
         {
           link: "/faq",
