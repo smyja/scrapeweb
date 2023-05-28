@@ -10,9 +10,9 @@ COPY package*.json ./
 # RUN npm install --production
 
 # Copy the built application files
-COPY ./.next ./.next
+COPY ./dist ./dist
 COPY ./public ./public
-COPY ./.next/static ./_next/static
+COPY ./dist/static ./_next/static
 
 # Expose the desired port (e.g., 3000)
 EXPOSE 3000
