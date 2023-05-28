@@ -8,7 +8,7 @@ export default function App(props: AppProps) {
   return (
     <>
       <Head>
-        <title>Insight</title>
+        <title>ScrapeWeb</title>
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="viewport"

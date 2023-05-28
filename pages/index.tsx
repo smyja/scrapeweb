@@ -17,7 +17,6 @@ import { IconChevronDown } from "@tabler/icons-react";
 import { HeroText } from "../components/HeroSection/HeroPage";
 import { FeaturesGrid } from "../components/Features/Features";
 import { FooterSimple } from "../components/Footer";
-import { AuthenticationTitle } from "../components/Form";
 import linkjson from "../components/lii";
 const HEADER_HEIGHT = rem(60);
 
@@ -119,34 +118,12 @@ export default function IndexPage() {
           <Group>
 
             <Text size="xl" weight={700} color="black">
-              Insight
+              Scrapeweb
             </Text>
           </Group>
         </Container>
       </Header>
       <HeroText />
-      <Title
-        order={1}
-        size="h2"
-        sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}` })}
-        weight={600}
-        align="center"
-        color={"purple"}
-      >
-        Insight is Featured In
-      </Title>
-
-      <Space h={20} />
-      <Text
-      sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}` })}
-      weight={900}
-      align="center"
-      >
-      🦙🧪  Llama Lab 🧬🦙
-      </Text>
-      <Space h={20} />
-
-      <AuthenticationTitle />
 
       <FeaturesGrid />
      
