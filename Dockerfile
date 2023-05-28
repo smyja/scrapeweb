@@ -16,4 +16,4 @@ COPY ./.next/static /usr/share/nginx/html/_next/static
 EXPOSE 3000
 
 # Start the Node.js server
-CMD ["node", "./usr/share/nginx/html/.next/standalone/server.js"]
+CMD ["node", "./.next/standalone/server.js"]
