@@ -18,4 +18,4 @@ COPY ./dist/static ./_next/static
 EXPOSE 3000
 
 # Start the Node.js server
-CMD ["node", "./.next/standalone/server.js"]
+CMD ["node", "./dist/standalone/server.js"]
