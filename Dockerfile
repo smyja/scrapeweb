@@ -8,7 +8,7 @@ RUN rm -rf /etc/nginx/conf.d
 RUN mkdir -p /etc/nginx/conf.d
 
 # Set appropriate permissions for the app directory
-RUN chmod -R 755 /usr/share/nginx/html/.next/server/app
+RUN chmod -R 755 ./.next/server/app
 
 # Copy Nginx configuration file
 COPY ./default.conf /etc/nginx/conf.d/
