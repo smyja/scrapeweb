@@ -10,11 +10,11 @@ COPY package*.json ./
 # RUN npm install --production
 
 # Copy the built application files
-COPY ./.next /usr/share/nginx/html/
-COPY ./public /usr/share/nginx/html/public
-COPY ./.next/static /usr/share/nginx/html/_next/static
+COPY ./.next ./.next
+COPY ./public ./public
+COPY ./next/static /usr/share/nginx/html/_next/static
 # Expose the desired port (e.g., 3000)
 EXPOSE 3000
 
 # Start the Node.js server
-CMD ["node", "./usr/share/nginx/html/.next/standalone/server.js"]
+CMD ["node", "./.next/standalone/server.js"]
