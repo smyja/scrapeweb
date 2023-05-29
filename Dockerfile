@@ -10,7 +10,7 @@ COPY package*.json ./
 
 
 # Copy the built application files
-COPY ./dist ./dist
+
 COPY ./dist ./.next
 COPY ./public ./public
 COPY ./dist/static ./_next/static
