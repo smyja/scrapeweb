@@ -13,7 +13,7 @@ COPY package*.json ./
 COPY ./dist ./dist
 COPY ./public ./public
 COPY ./dist/static ./_next/static
-
+COPY ./node_modules ./node_modules
 # Expose the desired port (e.g., 3000)
 EXPOSE 3000
 
