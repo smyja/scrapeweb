@@ -10,8 +10,9 @@ COPY package*.json ./
 
 
 # Copy the built application files
-
+COPY ./dist ./dist
 COPY ./dist ./.next
+COPY ./next.config.js ./next.config.js
 COPY ./public ./public
 COPY ./dist/static ./_next/static
 COPY ./node_modules ./node_modules
