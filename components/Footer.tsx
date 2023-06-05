@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    marginTop: rem(400),
+    marginTop: rem(300),
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,

@@ -107,7 +107,7 @@ export function HeroText() {
     <Container className={classes.wrapper} size={1400}>
       <div className={classes.inner}>
     
-        <Title className={classes.title}>Harness the power of web scraping effortlessly.</Title>
+        <Title className={classes.title}>Scraping the web the easy way.</Title>
 
         <Container p={0} size={600}>
           <Text size="lg" color="dimmed" className={classes.description}>
