@@ -11,7 +11,7 @@ import {
     Text,
     Title,
     Center,
-    Space,
+   Box
   } from "@mantine/core";
   import { useDisclosure } from "@mantine/hooks";
   import { IconChevronDown } from "@tabler/icons-react";
@@ -125,7 +125,13 @@ import {
           </Container>
         </Header>
         <HeroText />
-  
+        <Box w={800}>
+      <Text>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde provident eos fugiat id
+        necessitatibus magni ducimus molestias. Placeat, consequatur. Quisquam, quae magnam
+        perspiciatis excepturi iste sint itaque sunt laborum. Nihil?
+      </Text>
+    </Box>
   
        
         <FooterSimple links={linkjson.links} />
